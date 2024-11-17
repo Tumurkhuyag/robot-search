@@ -7,7 +7,7 @@ export const CardList = (props) => {
   return (
     <div className="card-list">
       {props.robots.map((el) => (
-        <Card robot={el} />
+        <Card key={el.id} robot={el} />
       ))}
     </div>
   );

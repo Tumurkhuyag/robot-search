@@ -27,11 +27,18 @@ export default class App extends Component {
   }
 
   render() {
+    const { robots, filterValue } = this.state;
+
+    // Filter robots based on search value
+    const filterResult = robots.filter((el) =>
+      el.name.toLowerCase().includes(filterValue.toLowerCase())
+    );
+
     return (
       <div className="App">
         <h1>Робот хайх</h1>
         <SearchField searchingRobot={this.searchingRobot} />
-        <CardList robots={this.state.robots} />
+        <CardList robots={filterResult} /> {/* Pass filtered robots instead */}
       </div>
     );
   }

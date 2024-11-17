@@ -1,4 +1,11 @@
-* {
-  margin: 0px;
-  padding: 0px;
+.App {
+  padding: 40px;
+  font-family: sans-serif;
+  text-align: left;
+}
+
+h1 {
+  font-size: 48px;
+  color: #101010;
+  margin-bottom: 24px;
 }
