@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css";
+
+export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      robots: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => this.setState({ robots: data }));
+  }
+
+  render() {
+    console.log(this.state.robots);
+    return (
+      <div className="app-container">
+        <h1>Робот хайх</h1>
+        {this.state.robots.map((el) => (
+          <div key={el.id}>{el.name}</div>
+        ))}
+      </div>
+    );
+  }
 }
-
-export default App;
