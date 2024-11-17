@@ -18,7 +18,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state.robots);
     return (
       <div className="App">
         <h1>Робот хайх</h1>
