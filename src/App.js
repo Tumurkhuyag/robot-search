@@ -1,15 +1,24 @@
 import React, { Component } from "react";
 import { CardList } from "./components/card-list";
+import { SearchField } from "./components/search-box";
+
 import "./App.css";
 
 export default class App extends Component {
   constructor() {
     super();
 
+    // Initial state has two properties
     this.state = {
-      robots: [],
+      robots: [], // Array to store all robots
+      filterValue: "", // String to store search input value
     };
   }
+
+  // This method updates searchValue whenever user types
+  searchingRobot = (event) => {
+    this.setState({ filterValue: event.target.value });
+  };
 
   componentDidMount() {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -21,6 +30,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Робот хайх</h1>
+        <SearchField searchingRobot={this.searchingRobot} />
         <CardList robots={this.state.robots} />
       </div>
     );
