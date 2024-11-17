@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { CardList } from "./components/card-list";
 import "./App.css";
 
 export default class App extends Component {
@@ -20,11 +20,9 @@ export default class App extends Component {
   render() {
     console.log(this.state.robots);
     return (
-      <div className="app-container">
+      <div className="App">
         <h1>Робот хайх</h1>
-        {this.state.robots.map((el) => (
-          <div key={el.id}>{el.name}</div>
-        ))}
+        <CardList robots={this.state.robots} />
       </div>
     );
   }
